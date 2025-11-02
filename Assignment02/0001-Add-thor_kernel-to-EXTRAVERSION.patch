@@ -1,0 +1,25 @@
+From a0aacd57115ae14769d90f753230f918affd5774 Mon Sep 17 00:00:00 2001
+From: dacortes <87203430+dacortes@users.noreply.github.com>
+Date: Sun, 2 Nov 2025 15:49:39 +0000
+Subject: [PATCH] Add -thor_kernel to EXTRAVERSION
+
+---
+ Assignment02/linux-6.16.1/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Assignment02/linux-6.16.1/Makefile b/Assignment02/linux-6.16.1/Makefile
+index d18dae2..3b2c26b 100644
+--- a/Assignment02/linux-6.16.1/Makefile
++++ b/Assignment02/linux-6.16.1/Makefile
+@@ -2,7 +2,7 @@
+ VERSION = 6
+ PATCHLEVEL = 16
+ SUBLEVEL = 1
+-EXTRAVERSION =
++EXTRAVERSION = -thor_kernel
+ NAME = Baby Opossum Posse
+ 
+ # *DOCUMENTATION*
+-- 
+2.50.1
+
