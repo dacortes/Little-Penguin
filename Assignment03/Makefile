@@ -22,7 +22,7 @@ ITALIC = \033[3m
 #                               VARIABLES                                      #
 ################################################################################
 
-NAME := hello
+NAME := do_work
 
 obj-m += $(NAME).o
 PWD := $(CURDIR)
