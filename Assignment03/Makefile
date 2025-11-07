@@ -51,7 +51,16 @@ down:
 		printf "$(RED)[ERROR]$(END) >> Module $(NAME) is not loaded\n"; \
 	fi
 
+info:
+	@if [ -f $(NAME).ko ]; then \
+		printf "$(GREEN)[SUCCESS]$(END) >> Found $(NAME).ko, displaying module information\n"; \
+		modinfo $(NAME).ko; \
+	else \
+		printf "$(RED)[ERROR]$(END) >> Module file $(NAME).ko not found\n"; \
+	fi
+
 re: clean all
+	@printf "$(BLUE)[INFO]$(END) >> Rebuilt module $(NAME).ko\n"
 
 help:
 	@printf "$(PURPLE)================= [ $(LIGHT)HELP MENU$(END) $(PURPLE)] =================$(END)\n"
@@ -59,6 +68,8 @@ help:
 	@printf "$(YELLOW)make clean$(END)\t→ Remove compiled files\n"
 	@printf "$(YELLOW)make up$(END)\t\t→ Load the module into the kernel (auto uses sudo if needed)\n"
 	@printf "$(YELLOW)make down$(END)\t\t→ Unload the module from the kernel (auto uses sudo if needed)\n"
+	@printf "$(YELLOW)make info$(END)\t\t→ Display module information using modinfo\n"
+	@printf "$(YELLOW)make re$(END)\t\t→ Clean and recompile the module\n"
 	@printf "$(YELLOW)make SUDO=sudo up$(END)\t→ Force use of sudo when loading manually\n"
 	@printf "$(YELLOW)make help$(END)\t\t→ Show this help message\n"
 	@printf "$(PURPLE)============================================================$(END)\n"
@@ -68,4 +79,4 @@ help:
 ################################################################################
 
 .SILENT:
-.PHONY: all clean up down re
+.PHONY: all clean up down info re help

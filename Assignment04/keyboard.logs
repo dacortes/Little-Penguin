@@ -1,0 +1,16 @@
+[  132.044799] helloKeyboard: loading out-of-tree module taints kernel.
+[  132.045149] Hello world - USB keyboard module
+[  132.045201] usbcore: registered new interface driver hello keyboard
+[  160.695445] usb 1-2: new full-speed USB device number 3 using ohci-pci
+[  161.006418] usb 1-2: New USB device found, idVendor=05ac, idProduct=024f, bcdDevice= 1.91
+[  161.006428] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  161.006431] usb 1-2: Product: Matias Wired Keyboard
+[  161.006435] usb 1-2: Manufacturer: Matias Keyboard
+[  161.006439] usb 1-2: SerialNumber: FK318VUS
+[  161.026554] input: Matias Keyboard Matias Wired Keyboard as /devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.0/0003:05AC:024F.0002/input/input7
+[  161.215173] apple 0003:05AC:024F.0002: input,hidraw1: USB HID v1.00 Keyboard [Matias Keyboard Matias Wired Keyboard] on usb-0000:00:06.0-2/input0
+[  161.237919] apple 0003:05AC:024F.0003: Fn key not found (Apple Wireless Keyboard clone?), disabling Fn key handling
+[  161.238034] input: Matias Keyboard Matias Wired Keyboard as /devices/pci0000:00/0000:00:06.0/usb1/1-2/1-2:1.1/0003:05AC:024F.0003/input/input8
+[  161.238455] apple 0003:05AC:024F.0003: input,hidraw2: USB HID v1.00 Device [Matias Keyboard Matias Wired Keyboard] on usb-0000:00:06.0-2/input1
+[  389.782671] usb usb1-port2: Cannot enable. Maybe the USB cable is bad?
+[  390.853083] usb 1-2: USB disconnect, device number 3

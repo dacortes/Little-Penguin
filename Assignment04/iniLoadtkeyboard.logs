@@ -1,0 +1,10 @@
+[    9.376030] Adding 2096124k swap on /dev/sda4.  Priority:1 extents:1 across:2096124k 
+[    9.398598] EXT4-fs (sda2): re-mounted 5b9bd2d7-f01b-4e6b-b79a-d0e986a940ae.
+[    9.498851] EXT4-fs (sda2): re-mounted 5b9bd2d7-f01b-4e6b-b79a-d0e986a940ae r/w.
+[    9.561622] EXT4-fs (sda1): mounted filesystem 4a88b262-e68d-453f-8e77-b3ed0b0a74cd r/w with ordered data mode. Quota mode: none.
+[    9.642630] EXT4-fs (sda3): mounted filesystem 489f7b1f-0dea-4a2d-97e8-ee9f17afd548 r/w with ordered data mode. Quota mode: none.
+[   10.916633] helloKeyboard: loading out-of-tree module taints kernel.
+[   10.916742] Hello world - USB keyboard module
+[   10.916766] usbcore: registered new interface driver hello keyboard
+[   17.805985] e1000: enp0s3 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX
+[  332.853410] kworker/u17:1 (45) used greatest stack depth: 12232 bytes left
