@@ -1,0 +1,21 @@
+root@dacortes ~/little-Penguin/Assignment05 $ dmesg 
+[ 1678.136134] [ERROR] Invalid value
+[ 1678.136137] [ERROR] Invalid value
+[ 1816.963326] misc_register fortytwo exit done!!!
+[ 2069.646016] kworker/u17:2 (276) used greatest stack depth: 12216 bytes left
+[ 2073.051324] hello misc_register fortytwo
+[ 2534.286316] misc_register fortytwo exit done!!!
+[ 2537.742874] hello misc_register fortytwo
+[ 2569.198126] [ERROR] Invalid value
+root@dacortes ~/little-Penguin/Assignment05 $ echo dacortes > /dev/fortytwo 
+root@dacortes ~/little-Penguin/Assignment05 $ dmesg 
+[ 1678.136134] [ERROR] Invalid value
+[ 1678.136137] [ERROR] Invalid value
+[ 1816.963326] misc_register fortytwo exit done!!!
+[ 2069.646016] kworker/u17:2 (276) used greatest stack depth: 12216 bytes left
+[ 2073.051324] hello misc_register fortytwo
+[ 2534.286316] misc_register fortytwo exit done!!!
+[ 2537.742874] hello misc_register fortytwo
+[ 2569.198126] [ERROR] Invalid value
+[ 2584.126290] [SUCCESS] writing done correctly on fortytwo
+root@dacortes ~/little-Penguin/Assignment05 $
