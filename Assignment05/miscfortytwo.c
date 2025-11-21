@@ -8,7 +8,7 @@
 #include <linux/kernel.h>
 #include <linux/string.h>
 
-#define AUTHOR "dacortes\0"
+#define AUTHOR "dacortes"
 #define DESCRIPTION "Simple misc driver  for kernel 6.16.1"
 #define VERSION "0.1"
 
@@ -43,8 +43,8 @@ static ssize_t etx_misc_write(struct file *file, const char __user *buf, size_t 
 
 static ssize_t etx_misc_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
 {
-	pr_info("dacortes\n");
-	return 0;
+	const char *msg = "dacortes\n";
+	return simple_read_from_buffer(buf, count, f_pos, msg, strlen(msg));
 }
 
 static int etx_misc_open(struct inode *inode, struct file *file)
