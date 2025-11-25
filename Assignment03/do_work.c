@@ -19,7 +19,6 @@ static int do_work(int *my_int, int retval)
 		udelay(10);
 
 	if (y < 10) {
-		/* That was a long sleep, tell userspace about it */
 		pr_info("We slept a long time!\n");
 
 		z = x * y;

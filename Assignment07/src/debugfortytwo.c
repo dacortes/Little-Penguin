@@ -8,20 +8,22 @@ static struct dentry *dir;
 
 static int __init test_init(void)
 {
-    dir = debugfs_create_dir(DIR_DEBUG, NULL);
-    if (!dir)
-        return -ENOMEM;
+	dir = debugfs_create_dir(DIR_DEBUG, NULL);
 
-    if (create_foo_file(dir) == -ENOMEM)
-	    return -ENOMEM;
+	if (!dir)
+		return -ENOMEM;
 
-    if (create_id_file(dir) == -ENOMEM)
-	    return -ENOMEM;
+	if (create_foo_file(dir) == -ENOMEM)
+		return -ENOMEM;
 
-    if (create_jff_file(dir) == -ENOMEM)
-	    return -ENOMEM;
-    printk(KERN_INFO "%s: uploaded\n", DIR_DEBUG);
-    return 0;
+	if (create_id_file(dir) == -ENOMEM)
+		return -ENOMEM;
+
+	if (create_jff_file(dir) == -ENOMEM)
+		return -ENOMEM;
+
+	pr_info("%s: uploaded\n", DIR_DEBUG);
+	return 0;
 }
 
 static void __exit test_exit(void)
@@ -30,7 +32,7 @@ static void __exit test_exit(void)
 	kfree(str.data);
 	str.data = NULL;
 	debugfs_remove_recursive(dir);
-	printk(KERN_INFO "%s: downloaded\n" , DIR_DEBUG);
+	pr_info("%s: downloaded\n", DIR_DEBUG);
 }
 
 module_init(test_init);

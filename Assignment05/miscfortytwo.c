@@ -44,6 +44,7 @@ static ssize_t etx_misc_write(struct file *file, const char __user *buf, size_t 
 static ssize_t etx_misc_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos)
 {
 	const char *msg = "dacortes\n";
+
 	return simple_read_from_buffer(buf, count, f_pos, msg, strlen(msg));
 }
 
