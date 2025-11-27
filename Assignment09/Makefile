@@ -38,14 +38,14 @@ SUDO := $(shell [ "$$(id -u)" -ne 0 ] && echo "sudo")
 all: up
 
 compile:
-        make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
 clean:
-        make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 
 
 mount:
-        @if mount | grep "none on /sys/kernel/debug"; then \
+	@if mount | grep "none on /sys/kernel/debug"; then \
                 printf "$(BLUE)[INFO]$(END) The debugfs module is already mounted\n"; \
         else \
                 mount -t debugfs none /sys/kernel/debug; \
@@ -53,7 +53,7 @@ mount:
         fi
 
 up: compile
-        @if lsmod | awk '{print $$1}' | grep -q $(NAME); then \
+	@if lsmod | awk '{print $$1}' | grep -w $(NAME); then \
                 printf "$(BLUE)[INFO]$(END) >> Modulo $(NAME) is already loaded\n"; \
         else \
                 if [ -f $(NAME).ko ]; then \
@@ -63,14 +63,14 @@ up: compile
                 fi \
         fi
 down:
-        @if lsmod | awk '{print $$1}' | grep -q $(NAME); then \
+	@if lsmod | awk '{print $$1}' | grep -w $(NAME); then \
                 rmmod $(NAME) && printf "$(GREEN)[SUCCESS]$(END) >> Unloaded $(NAME).ko\n"; \
         else \
                 printf "$(RED)[ERROR]$(END) >> Module $(NAME) is not loaded\n"; \
         fi
 
 info:
-        @if [ -f $(NAME).ko ]; then \
+	@if [ -f $(NAME).ko ]; then \
                 printf "$(GREEN)[SUCCESS]$(END) >> Found $(NAME).ko, displaying module information\n"; \
                 modinfo $(NAME).ko; \
         else \
@@ -78,21 +78,21 @@ info:
         fi
 
 re: clean all
-        @printf "$(BLUE)[INFO]$(END) >> Rebuilt module $(NAME).ko\n"
+	@printf "$(BLUE)[INFO]$(END) >> Rebuilt module $(NAME).ko\n"
 
 help:
-        @printf "$(PURPLE)================= [ $(LIGTH)HELP MENU$(END) $(PURPLE)] =================$(END)\n"
-        @printf "$(YELLOW)make all$(END)\t\t→ Compile and load the kernel module ($(NAME).ko) with debugfs mount\n"
-        @printf "$(YELLOW)make compile$(END)\t→ Only compile the kernel module ($(NAME).ko)\n"
-        @printf "$(YELLOW)make clean$(END)\t→ Remove compiled files\n"
-        @printf "$(YELLOW)make mount$(END)\t→ Mount debugfs at /sys/kernel/debug if not mounted\n"
-        @printf "$(YELLOW)make up$(END)\t\t→ Load the module into the kernel (auto uses sudo if needed)\n"
-        @printf "$(YELLOW)make down$(END)\t\t→ Unload the module from the kernel (auto uses sudo if needed)\n"
-        @printf "$(YELLOW)make info$(END)\t\t→ Display module information using modinfo\n"
-        @printf "$(YELLOW)make re$(END)\t\t→ Clean and recompile the module\n"
-        @printf "$(YELLOW)make SUDO=sudo up$(END)\t→ Force use of sudo when loading manually\n"
-        @printf "$(YELLOW)make help$(END)\t\t→ Show this help message\n"
-        @printf "$(PURPLE)============================================================$(END)\n"
+	@printf "$(PURPLE)================= [ $(LIGTH)HELP MENU$(END) $(PURPLE)] =================$(END)\n"
+	@printf "$(YELLOW)make all$(END)\t\t→ Compile and load the kernel module ($(NAME).ko) with debugfs mount\n"
+	@printf "$(YELLOW)make compile$(END)\t→ Only compile the kernel module ($(NAME).ko)\n"
+	@printf "$(YELLOW)make clean$(END)\t→ Remove compiled files\n"
+	@printf "$(YELLOW)make mount$(END)\t→ Mount debugfs at /sys/kernel/debug if not mounted\n"
+	@printf "$(YELLOW)make up$(END)\t\t→ Load the module into the kernel (auto uses sudo if needed)\n"
+	@printf "$(YELLOW)make down$(END)\t\t→ Unload the module from the kernel (auto uses sudo if needed)\n"
+	@printf "$(YELLOW)make info$(END)\t\t→ Display module information using modinfo\n"
+	@printf "$(YELLOW)make re$(END)\t\t→ Clean and recompile the module\n"
+	@printf "$(YELLOW)make SUDO=sudo up$(END)\t→ Force use of sudo when loading manually\n"
+	@printf "$(YELLOW)make help$(END)\t\t→ Show this help message\n"
+	@printf "$(PURPLE)============================================================$(END)\n"
 
 ################################################################################
 #                               CONFIG                                         #

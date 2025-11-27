@@ -17,13 +17,10 @@ static int mymounts_show(struct seq_file *m, void *v)
 		filp_close(f, NULL);
 		return -ENOMEM;
 	}
-
 	while ((read_size = kernel_read(f, buf, PAGE_SIZE - 1, &f->f_pos)) > 0) {
-
 		p = buf;
 
 		while ((line = strsep(&p, "\n")) != NULL) {
-
 			char mount_point[256] = {0};
 			char fs_type[64] = {0};
 			char *token;
@@ -36,12 +33,12 @@ static int mymounts_show(struct seq_file *m, void *v)
 				field++;
 
 				if (field == 5)
-					strscpy(mount_point, token, sizeof(mount_point)-1);
+					strscpy(mount_point, token, sizeof(mount_point) - 1);
 
 				if (strcmp(token, "-") == 0) {
 					token = strsep(&t, " ");
 					if (token)
-						strscpy(fs_type, token, sizeof(fs_type)-1);
+						strscpy(fs_type, token, sizeof(fs_type) - 1);
 					break;
 				}
 			}
