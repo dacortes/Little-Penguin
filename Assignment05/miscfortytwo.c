@@ -93,7 +93,6 @@ static void __exit fortytwo_exit(void)
 	pr_info("misc_register fortytwo exit done!!!\n");
 }
 
-
 module_init(fortytwo_init);
 module_exit(fortytwo_exit);
 
