@@ -26,7 +26,7 @@ static ssize_t id_write(struct file *file, const char __user *buf, size_t len, l
 		dst[len - 1] = '\0';
 	if (tmp < len)
 		tmp = len;
-	if (strncmp(dst, AUTHOR, len)) {
+	if (strncmp(dst, AUTHOR, tmp)) {
 		pr_err("[ERROR] Invalid value\n");
 		return -EINVAL;
 	}
