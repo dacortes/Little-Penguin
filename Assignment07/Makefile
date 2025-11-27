@@ -53,7 +53,7 @@ mount:
 	fi
 
 up: compile
-	@if lsmod | awk '{print $$1}' | grep -q $(NAME); then \
+	@if lsmod | awk '{print $$1}' | grep -w $(NAME); then \
 		printf "$(BLUE)[INFO]$(END) >> Modulo $(NAME) is already loaded\n"; \
 	else \
 		if [ -f $(NAME).ko ]; then \
@@ -63,7 +63,7 @@ up: compile
 		fi \
 	fi
 down:
-	@if lsmod | awk '{print $$1}' | grep -q $(NAME); then \
+	@if lsmod | awk '{print $$1}' | grep -w $(NAME); then \
 		rmmod $(NAME) && printf "$(GREEN)[SUCCESS]$(END) >> Unloaded $(NAME).ko\n"; \
 	else \
 		printf "$(RED)[ERROR]$(END) >> Module $(NAME) is not loaded\n"; \

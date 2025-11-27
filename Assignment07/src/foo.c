@@ -59,7 +59,6 @@ static int foo_close(struct inode *inodep, struct file *filp)
 	return 0;
 }
 
-
 static const struct file_operations fops = {
 	.owner		= THIS_MODULE,
 	.write		= foo_write,
