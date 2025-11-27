@@ -27,7 +27,9 @@ PWD := $(CURDIR)
 KDIR := /lib/modules/$(shell uname -r)/build
 SUDO := $(shell [ "$$(id -u)" -ne 0 ] && echo "sudo")
 
-all:
+all: up
+
+compile:
 	$(MAKE) -C $(KDIR) M=$(PWD) modules
 
 clean:
@@ -49,8 +51,8 @@ uninstall:
 		printf "$(YELLOW)[INFO]$(END) >> No installed module found to remove\n"; \
 	fi
 
-up:
-	@if lsmod | awk '{print $$1}' | grep -q $(NAME); then \
+up: compile
+	@if lsmod | awk '{print $$1}' | grep -w $(NAME); then \
 		printf "$(BLUE)[INFO]$(END) >> Module $(NAME) already loaded\n"; \
 	else \
 		if [ -f $(NAME).ko ]; then \
@@ -61,7 +63,7 @@ up:
 	fi
 
 down:
-	@if lsmod | awk '{print $$1}' | grep -q $(NAME); then \
+	@if lsmod | awk '{print $$1}' | grep -w $(NAME); then \
 		$(SUDO) rmmod $(NAME) && printf "$(GREEN)[SUCCESS]$(END) >> Unloaded $(NAME).ko\n"; \
 	else \
 		printf "$(RED)[ERROR]$(END) >> Module $(NAME) is not loaded\n"; \
@@ -109,7 +111,7 @@ disable-boot:
 		printf "$(YELLOW)[INFO]$(END) >> Module not configured for boot\n"; \
 	fi
 
-re: clean all
+re: down clean all
 	@printf "$(BLUE)[INFO]$(END) >> Rebuilt module $(NAME).ko\n"
 
 help:

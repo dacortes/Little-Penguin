@@ -6,13 +6,11 @@
 #include <linux/hid.h>
 #include <linux/usb.h>
 
-
 #define AUTHOR "dacortes"
 #define DESCRIPTION "Simple Hello World Module for kernel 6.16.1"
 #define VERSION "0.1"
 #define DRIVER_NAME "helloKeyboard"
 #define	DEVICE_NAME "helloKeyboard"
-
 
 static struct usb_device_id hello_usb_table[] = {
 	{ USB_INTERFACE_INFO(USB_INTERFACE_CLASS_HID,
@@ -22,8 +20,7 @@ static struct usb_device_id hello_usb_table[] = {
 };
 MODULE_DEVICE_TABLE(usb, hello_usb_table);
 
-static int hello_usb_probe(struct usb_interface *interface,
-		const struct usb_device_id *id)
+static int hello_usb_probe(struct usb_interface *interface, const struct usb_device_id *id)
 {
 	struct usb_device *udev = interface_to_usbdev(interface);
 	unsigned short vendor = le16_to_cpu(udev->descriptor.idVendor);
@@ -47,7 +44,6 @@ static struct usb_driver hello_usb_driver = {
 	.id_table = hello_usb_table,
 };
 
-
 static int __init hello_init(void)
 {
 	int	result;
@@ -63,7 +59,6 @@ static void __exit hello_exit(void)
 {
 	pr_info("Cleaning up module\n");
 }
-
 
 module_init(hello_init);
 module_exit(hello_exit);
