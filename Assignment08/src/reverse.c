@@ -38,7 +38,6 @@ static struct miscdevice myfd_device = {
 	.fops	= &myfd_fops
 };
 
-
 static int __init myfd_init(void)
 {
 	int retval;
@@ -83,7 +82,6 @@ ssize_t myfd_read(struct file *fp, char __user *user, size_t size, loff_t *offs)
 	mutex_unlock(&str_lock);
 	return ret;
 }
-
 
 ssize_t myfd_write(struct file *fp, const char __user *user, size_t size, loff_t *offs)
 {
